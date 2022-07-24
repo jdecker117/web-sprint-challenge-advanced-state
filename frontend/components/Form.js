@@ -18,11 +18,11 @@ console.log(props)
         props.setMessage(`Congrats: "${newQuestion}" is a great question!`)
       })
       .catch(err => {
-        console.log(err)
+        setMessage(err)
       })
       .finally(props.resetForm())
     }
-    
+
   return (
     <form id="form" onSubmit={onSubmit}>
       <h2>Create New Quiz</h2>

@@ -63,7 +63,15 @@ export function postAnswer() {
 }
 export function postQuiz() {
   return function (dispatch) {
-      
+    axios.post("http://localhost:9000/api/quiz/new", { question_text: newQuestion, true_answer_text: newTrueAnswer, false_answer_text: newFalseAnswer})
+    .then(res => {
+      console.log(res)
+      dispatch(setMessage(`Congrats: "${newQuestion}" is a great question!`))
+    })
+    .catch(err => {
+      setMessage(err)
+    })
+    .finally(props.resetForm())
     // On successful POST:
     // - Dispatch the correct message to the the appropriate state
     // - Dispatch the resetting of the form
