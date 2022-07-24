@@ -15,7 +15,7 @@ console.log(props)
     axios.post("http://localhost:9000/api/quiz/new", { question_text: newQuestion, true_answer_text: newTrueAnswer, false_answer_text: newFalseAnswer})
       .then(res => {
         console.log(res)
-        props.setMessage(`Congrats: "${newQuestion}" is a great question!`)
+        props.setMessage(`Congrats: "${newQuestion}" is a great question! That was the correct answer` )
       })
       .catch(err => {
         setMessage(err)
