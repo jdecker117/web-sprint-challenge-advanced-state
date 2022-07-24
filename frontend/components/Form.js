@@ -16,20 +16,20 @@ console.log(props)
       .then(res => {
         console.log(res)
         props.setMessage(`Congrats: "${newQuestion}" is a great question!`)
-        props.resetForm()
       })
       .catch(err => {
         console.log(err)
       })
+      .finally(props.resetForm())
     }
-
+    
   return (
     <form id="form" onSubmit={onSubmit}>
       <h2>Create New Quiz</h2>
       <input maxLength={50} onChange={onChange} id="newQuestion" value={newQuestion} placeholder="Enter question" />
       <input maxLength={50} onChange={onChange} id="newTrueAnswer" value={newTrueAnswer} placeholder="Enter true answer" />
       <input maxLength={50} onChange={onChange} id="newFalseAnswer" value={newFalseAnswer} placeholder="Enter false answer" />
-      <button id="submitNewQuizBtn">Submit new quiz</button>
+      {newQuestion.trim().length < 1 || newTrueAnswer.trim().length < 1 || newFalseAnswer.trim().length < 1 ? <button disabled id="submitNewQuizBtn">Submit new quiz</button>: <button id="submitNewQuizBtn">Submit new quiz</button>}
     </form>
   )
 }
